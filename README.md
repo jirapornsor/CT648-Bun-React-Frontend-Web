@@ -6,5 +6,10 @@
 2. PokemonTable จะจัดการการแสดงผลข้อมูลตัวอย่างชื่อ Pokémon ในรูปแบบตาราง
 3. DataDisplay_pok จะจัดการการดึงและแสดงข้อมูลเกี่ยวกับ Pokémon จาก PokéAPI โดยมีช่องให้กรอกชื่อ Pokémon แล้วกด Search ก็จะโชว์รูปและข้อมูลของ Pokémon
 
-ขั้นตอนการสร้าง
-1. 
+#### ขั้นตอนการสร้าง
+1. สร้างโปรเจกต์ React ด้วย Vite โดยใช้ bun ด้วยคำสั่ง
+   ```bash
+   bun create vite my-react-app --template react-ts
+   ```
+   
+   

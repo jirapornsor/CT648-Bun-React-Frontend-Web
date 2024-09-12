@@ -72,11 +72,11 @@
         - pokemonName: เก็บชื่อโปเกมอนที่ผู้ใช้ต้องการค้นหา
         - loading: เก็บสถานะการโหลดข้อมูล
    ```bash
-   const DataDisplay_pok = () => {
-     const [data, setData] = useState<PokemonData | null>(null);
-     const [pokemonName, setPokemonName] = useState<string>("pikachu");
-     const [loading, setLoading] = useState<boolean>(false);
-   };
+      const DataDisplay_pok = () => {
+        const [data, setData] = useState<PokemonData | null>(null);
+        const [pokemonName, setPokemonName] = useState<string>("pikachu");
+        const [loading, setLoading] = useState<boolean>(false);
+      };
    ```
    - ใช้ฟังก์ชันดึงข้อมูล fetchData และใช้ ใช้ axios เพื่อดึงข้อมูลโปเกมอนจาก API ของ PokeAPI โดยใช้ชื่อโปเกมอนที่ผู้ใช้ป้อน
         - ฟังก์ชันนี้จะถูกเรียกเมื่อผู้ใช้ค้นหาโปเกมอนใหม่หรือเมื่อเริ่มโหลดคอมโพเนนต์
@@ -84,42 +84,42 @@
         - จัดการสถานะการโหลดและแสดงผลหากมีข้อผิดพลาด
    - 
    ```bash
-  const fetchData = async (name: string) => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${name}`
-      );
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setData(null);
-    } finally {
-      setLoading(false);
-    }
-  };
+     const fetchData = async (name: string) => {
+       setLoading(true);
+       try {
+         const response = await axios.get(
+           `https://pokeapi.co/api/v2/pokemon/${name}`
+         );
+         setData(response.data);
+       } catch (error) {
+         console.error("Error fetching data:", error);
+         setData(null);
+       } finally {
+         setLoading(false);
+       }
+     };
    ```
    - ใช้ useEffect และการส่งข้อมูลผ่านฟอร์ม
         - useEffect ใช้เพื่อดึงข้อมูลทันทีที่มีการเปลี่ยนแปลงชื่อโปเกมอน
         - การส่งข้อมูลผ่านฟอร์มใช้ฟังก์ชัน handleSubmit เพื่อดึงข้อมูลตามชื่อโปเกมอนที่ผู้ใช้ป้อน
    ```bash
-   useEffect(() => {
-     fetchData(pokemonName);  // เรียก fetchData เมื่อ pokemonName เปลี่ยนแปลง
-   }, [pokemonName]);
+      useEffect(() => {
+        fetchData(pokemonName);  // เรียก fetchData เมื่อ pokemonName เปลี่ยนแปลง
+      }, [pokemonName]);
 
-   const handleSubmit = (e: React.FormEvent) => {
-     e.preventDefault();  // ป้องกันการ reload หน้าเว็บเมื่อส่งฟอร์ม
-     fetchData(pokemonName.toLowerCase());  // ดึงข้อมูลโปเกมอนที่ป้อน
-   };
+      const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();  // ป้องกันการ reload หน้าเว็บเมื่อส่งฟอร์ม
+        fetchData(pokemonName.toLowerCase());  // ดึงข้อมูลโปเกมอนที่ป้อน
+      };
    ```
 8.	แก้ไขโค้ดที่ src/App.tsx เป็นคอมโพเนนต์หลักของแอปพลิเคชัน React ของคุณ ซึ่งจะรวมคอมโพเนนต์อื่นๆ ที่ได้สร้างไว้เข้าด้วยกันเพื่อให้แสดงผลในหน้าเดียวกัน
    - DataDisplay จะจัดการการแสดงผลข้อมูลมุขตลก
    - PokemonTable จะจัดการการแสดงผลข้อมูลตัวอย่างชื่อ Pokémon ในรูปแบบตาราง
    - DataDisplay_pok จะจัดการการดึงและแสดงข้อมูลเกี่ยวกับ Pokémon จาก PokéAPI
    ```bash
-   import DataDisplay from "./components/DataDisplay";
-   import DataDisplay_pok from "./components/DataDisplay_pok";
-   import PokemonTable from "./components/PokemonTable";
+      import DataDisplay from "./components/DataDisplay";
+      import DataDisplay_pok from "./components/DataDisplay_pok";
+      import PokemonTable from "./components/PokemonTable";
    ```
 
 ##### ผู้จัดทำ
